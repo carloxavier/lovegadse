@@ -1,10 +1,7 @@
 package com.puppy.adoption.lovegadse.app.ui.components
 
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Card
 import androidx.compose.material.Text
@@ -19,15 +16,21 @@ import com.puppy.adoption.lovegadse.app.ui.theme.Typography
 
 @Composable
 fun PuppyCard(puppy: String) {
-    Card(modifier = Modifier.padding(16.dp), elevation = 4.dp) {
+    Card(
+        modifier = Modifier.padding(16.dp),
+        elevation = 0.dp,
+    ) {
         Column(modifier = Modifier.padding(8.dp)) {
             Image(
                 ColorPainter(Color.Blue),
                 contentDescription = "$puppy picture",
-                modifier = Modifier.height(200.dp)
+                modifier = Modifier
+                    .height(200.dp)
                     .fillMaxWidth()
                     .clip(shape = RoundedCornerShape(4.dp))
             )
+            Spacer(modifier = Modifier.height(8.dp))
+
             Text(text = puppy)
             Text(text = "puppy description", style = Typography.caption)
         }

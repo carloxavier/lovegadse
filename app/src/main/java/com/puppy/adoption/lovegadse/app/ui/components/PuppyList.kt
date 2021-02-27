@@ -8,16 +8,21 @@ import androidx.compose.material.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavHostController
+import androidx.navigation.compose.rememberNavController
 import com.puppy.adoption.lovegadse.app.ui.theme.LoveGadseTheme
 
 
 @Composable
-fun PuppyList(puppies: List<String>) {
+fun PuppyList(
+    puppies: List<String>,
+    navController: NavHostController,
+) {
     LazyColumn(
         contentPadding = PaddingValues(horizontal = 16.dp, vertical = 8.dp),
     ) {
         items(puppies) { puppy ->
-            PuppyCard(puppy = puppy)
+            PuppyCard(puppy, navController)
         }
     }
 }
@@ -27,7 +32,10 @@ fun PuppyList(puppies: List<String>) {
 fun DefaultPreviewPuppyList() {
     LoveGadseTheme {
         Surface(color = MaterialTheme.colors.background) {
-            PuppyList(listOf("Water-gadse", "Bell-gadse", "Winter-gadse"))
+            PuppyList(
+                listOf("Water-gadse", "Bell-gadse", "Winter-gadse"),
+                rememberNavController(),
+            )
         }
     }
 }

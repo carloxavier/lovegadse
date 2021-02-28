@@ -64,7 +64,8 @@ fun DefaultPreviewPuppyCard() {
             name = "Paquita",
             description = "Clothes destroyer, be careful.. but will never harm people",
             photoUrl = "https://images.pexels.com/photos/2171583/pexels-photo-2171583.jpeg?w=400&q=30",
-            ownerPhoneNumber = "09001728888"
+            ownerPhoneNumber = "09001728888",
+            history = "",
         ),
         rememberNavController(),
     )

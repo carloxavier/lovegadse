@@ -31,9 +31,14 @@ fun Detail(dependencies: DependenciesHolder, puppyID: String, navController: Nav
             }
         )
         Spacer(modifier = Modifier.height(8.dp))
-
-        Text(text = puppy.name)
-        Text(text = puppy.description, style = Typography.caption)
-        Text(text = puppy.ownerPhoneNumber, style = Typography.caption)
+        Column(modifier = Modifier.padding(horizontal = 24.dp)) {
+            Text(text = puppy.name)
+            Spacer(modifier = Modifier.height(8.dp))
+            Text(text = puppy.description, style = Typography.caption)
+            Spacer(modifier = Modifier.height(8.dp))
+            Text(text = "Call for adoption: ${puppy.ownerPhoneNumber}", style = Typography.caption)
+            Spacer(modifier = Modifier.height(8.dp))
+            Text(text = puppy.history)
+        }
     }
 }

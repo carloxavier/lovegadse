@@ -1,4 +1,4 @@
-# Sample App for the Jetpack Compose #AndroidDevChallenge
+# Sample App for the Jetpack Compose for the #AndroidDevChallenge
 
 Screenshots
 -----------

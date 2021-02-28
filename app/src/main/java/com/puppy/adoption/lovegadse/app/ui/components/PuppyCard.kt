@@ -16,18 +16,19 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.navigate
 import androidx.navigation.compose.rememberNavController
+import com.puppy.adoption.lovegadse.app.data.Puppy
 import com.puppy.adoption.lovegadse.app.ui.theme.Typography
 
 @Composable
 fun PuppyCard(
-    puppy: String,
+    puppy: Puppy,
     navController: NavHostController,
 ) {
     Card(
         modifier = Modifier
             .padding(16.dp)
             .clickable {
-                navController.navigate(Route.Detail.withParam(puppy))
+                navController.navigate(Route.Detail.withParam(puppy.name))
             },
         elevation = 0.dp,
     ) {
@@ -42,8 +43,8 @@ fun PuppyCard(
             )
             Spacer(modifier = Modifier.height(8.dp))
 
-            Text(text = puppy)
-            Text(text = "puppy description", style = Typography.caption)
+            Text(text = puppy.name)
+            Text(text = puppy.description, style = Typography.caption)
         }
     }
 }
@@ -51,5 +52,13 @@ fun PuppyCard(
 @Preview(showBackground = true)
 @Composable
 fun DefaultPreviewPuppyCard() {
-    PuppyCard("Bellgadse", rememberNavController())
+    PuppyCard(
+        Puppy(
+            name = "Paquita",
+            description = "Clothes destroyer, be careful.. but will never harm people",
+            photoUrl = "https://images.pexels.com/photos/2171583/pexels-photo-2171583.jpeg?w=400&q=30",
+            ownerPhoneNumber = "09001728888"
+        ),
+        rememberNavController(),
+    )
 }

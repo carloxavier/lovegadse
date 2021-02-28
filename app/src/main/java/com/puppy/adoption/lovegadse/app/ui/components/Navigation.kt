@@ -5,17 +5,18 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.puppy.adoption.lovegadse.app.data.DependenciesHolder
 
 @Composable
-fun Navigation() {
+fun Navigation(dependencies: DependenciesHolder) {
     Scaffold {
         rememberNavController().let { navController ->
             NavHost(navController, startDestination = Route.Home.path) {
                 composable(Route.Home.path) {
-                    Home(navController)
+                    Home(dependencies, navController)
                 }
                 composable(Route.Detail.path) {
-                    Detail(it.arguments!!.getString("puppyID")!!, navController)
+                    Detail(dependencies, it.arguments!!.getString("puppyID")!!, navController)
                 }
             }
         }

@@ -6,19 +6,18 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
+import com.puppy.adoption.lovegadse.app.data.DependenciesHolder
+import com.puppy.adoption.lovegadse.app.data.PuppyRepository
 import com.puppy.adoption.lovegadse.app.ui.theme.LoveGadseTheme
 
 
 @Composable
-fun Home(navController: NavHostController) {
+fun Home(dependencies: DependenciesHolder, navController: NavHostController) {
+    val puppyRepository = dependencies.puppyRepository
     LoveGadseTheme {
         Surface(color = MaterialTheme.colors.background) {
             PuppyList(
-                listOf(
-                    "Water-gadse",
-                    "Bell-gadse",
-                    "Winter-gadse",
-                ),
+                puppyRepository.puppies(),
                 navController
             )
         }
@@ -29,9 +28,12 @@ fun Home(navController: NavHostController) {
 @Composable
 fun DefaultPreviewHome() {
     val navController = rememberNavController()
+    val dependencies = object : DependenciesHolder {
+        override val puppyRepository by lazy { PuppyRepository() }
+    }
     LoveGadseTheme {
         Surface(color = MaterialTheme.colors.background) {
-            Home(navController)
+            Home(dependencies, navController)
         }
     }
 }

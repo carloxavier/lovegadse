@@ -10,12 +10,14 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
+import com.puppy.adoption.lovegadse.app.data.Puppy
+import com.puppy.adoption.lovegadse.app.data.PuppyRepository
 import com.puppy.adoption.lovegadse.app.ui.theme.LoveGadseTheme
 
 
 @Composable
 fun PuppyList(
-    puppies: List<String>,
+    puppies: List<Puppy>,
     navController: NavHostController,
 ) {
     LazyColumn(
@@ -33,7 +35,7 @@ fun DefaultPreviewPuppyList() {
     LoveGadseTheme {
         Surface(color = MaterialTheme.colors.background) {
             PuppyList(
-                listOf("Water-gadse", "Bell-gadse", "Winter-gadse"),
+                PuppyRepository().puppies(),
                 rememberNavController(),
             )
         }
